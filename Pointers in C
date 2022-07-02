@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+void update(int *a,int *b) {
+    // Complete this function 
+    *a=*a+*b;
+    *b=abs(*a-(2**b)); 
+       
+}
+
+int main() {
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
+
+    return 0;
+}
+
+/*   Explaniation of the past function 
+
+it is meant as (2 * (*b)), because he already changed the value of *a with *a+*b
+
+imagine *a = 4, *b=5;
+
+*a = *a + *b ; => *a = 9;
+
+so now thw result of a - b will not be correct so subtracting b 2 times will solve the problem, as a has b in it already.
+
+*b = abs (*a - (2 * (*b));
+
+*b = abs (9 - (2 * (5));
+
+*b = abs (9 - (10));
+
+*b = abs (-1);
+
+*b = 1;
+
+
+*/
+
+
+
+
+/*Another method to solve it by a temp variable */
+
+#include <cstdio>
+#include <cstdlib>
+
+void update(int *a,int *b) {
+    int temp = *a;
+    *a = *a + *b;
+    *b = abs(temp - *b);
+
+}
+
+int main() {
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
+
+    return 0;
+}
